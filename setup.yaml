@@ -1,0 +1,73 @@
+# Playbook para instalar o meu sublime-text-3
+
+---
+- hosts: localhost
+  remote_user: felipedemorais
+  sudo: yes
+  tasks:
+   - name: python-apt(dependency of the apt_repository)
+     apt: name=python-apt update_cache=yes state=present
+   
+   - name: Spotify repo key
+     # apt_key: keyserver="keyserver.ubuntu.com" recv=94558F59 state=present
+     shell: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+   
+   - name: Spotify repo
+     apt_repository: repo="deb http://repository.spotify.com stable non-free" update_cache=yes state=present
+
+   - name: hipchat repo
+     apt_repository: repo="deb http://downloads.hipchat.com/linux/apt stable main" update_cache=yes state=present
+     # shell: echo "deb http://downloads.hipchat.com/linux/apt stable main" > /etc/apt/sources.list.d/atlassian-hipchat.list
+   - name: hipchat key
+     apt_key: url=https://www.hipchat.com/keys/hipchat-linux.key state=present
+     # shell: wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -
+
+   - name: add repositories of sublime, gimp, chrome, hipchat, spotify
+     apt_repository: repo={{ item }} update_cache=yes state=present
+     with_items:
+     # Sublime 3 repo
+     - ppa:webupd8team/sublime-text-3
+     # Gimp repo
+     - ppa:otto-kesselgulasch/gimp
+
+   - name: Google Chrome repo
+     apt_repository: repo="{{ item }}" update_cache=yes state=present
+     with_items:
+     # Google Chrome repo
+     - deb http://dl.google.com/linux/chrome/deb stable main
+     # # HipChat repo
+     - deb http://downloads.hipchat.com/linux/apt stable main
+     # # Spotify repo
+     - deb http://repository.spotify.com stable non-free
+     
+
+   - name: Installing Packages
+     apt: name={{ item }} update_cache=yes state=present
+     with_items:
+     # Install sublime-text-3
+     - sublime-text-installer
+     # Install jre 7
+     - openjdk-7-jre
+     # Install jdk 7
+     - openjdk-7-jdk
+     # Install terminator
+     -  terminator
+     # Installing Google-Chrome
+     - google-chrome-stable
+     # Install Gimp
+     - gimp
+     # Install Git
+     - git
+     # Install Skype
+     - skype
+     # Install Node JS
+     - nodejs
+     # Install npm
+     - npm
+     # Install HipChat
+     - hipchat
+     # Install Spotify
+     - spotify-client
+
+   - name: Link to s from subl
+     file: src=/usr/bin/subl dest=/usr/bin/s state=link
