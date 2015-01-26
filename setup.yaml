@@ -1,5 +1,5 @@
 # Playbook para instalar o meu sublime-text-3
-
+# TODO GRUNT, Android Studio, PIP
 ---
 - hosts: localhost
   remote_user: felipedemorais
