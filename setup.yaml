@@ -1,5 +1,6 @@
-# Playbook para instalar o meu sublime-text-3
+# Playbook para instalar as minhas coisas no meu ubuntu
 # TODO GRUNT, Android Studio, PIP
+
 ---
 - hosts: localhost
   remote_user: felipedemorais
@@ -7,20 +8,18 @@
   tasks:
    - name: python-apt(dependency of the apt_repository)
      apt: name=python-apt update_cache=yes state=present
-   
+
    - name: Spotify repo key
-     # apt_key: keyserver="keyserver.ubuntu.com" recv=94558F59 state=present
-     shell: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-   
+     apt_key: keyserver=keyserver.ubuntu.com id=94558F59 state=present
+
    - name: Spotify repo
      apt_repository: repo="deb http://repository.spotify.com stable non-free" update_cache=yes state=present
 
    - name: hipchat repo
      apt_repository: repo="deb http://downloads.hipchat.com/linux/apt stable main" update_cache=yes state=present
-     # shell: echo "deb http://downloads.hipchat.com/linux/apt stable main" > /etc/apt/sources.list.d/atlassian-hipchat.list
+
    - name: hipchat key
      apt_key: url=https://www.hipchat.com/keys/hipchat-linux.key state=present
-     # shell: wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -
 
    - name: add repositories of sublime, gimp, chrome, hipchat, spotify
      apt_repository: repo={{ item }} update_cache=yes state=present
