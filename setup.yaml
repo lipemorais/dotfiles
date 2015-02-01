@@ -12,24 +12,25 @@
    - name: Spotify repo key
      apt_key: keyserver=keyserver.ubuntu.com id=94558F59 state=present
 
-   - name: Spotify repo
-     apt_repository: repo="deb http://repository.spotify.com stable non-free" update_cache=yes state=present
-
-   - name: hipchat repo
-     apt_repository: repo="deb http://downloads.hipchat.com/linux/apt stable main" update_cache=yes state=present
+   - name: RVM key
+     apt_key: keyserver=hkp://keys.gnupg.net id=409B6B1796C275462A1703113804BB82D39DC0E3
 
    - name: hipchat key
      apt_key: url=https://www.hipchat.com/keys/hipchat-linux.key state=present
 
-   - name: add repositories of sublime, gimp, chrome, hipchat, spotify
+   - name: add repositories of sublime, gimp, RVM
      apt_repository: repo={{ item }} update_cache=yes state=present
      with_items:
      # Sublime 3 repo
      - ppa:webupd8team/sublime-text-3
      # Gimp repo
      - ppa:otto-kesselgulasch/gimp
+     # RVM repo
+     - ppa:rael-gc/rvm
+     # Pop Corn Time repo
+     - ppa:webupd8team/popcorntime
 
-   - name: Google Chrome repo
+   - name: Google Chrome, HipChat and Spotify repo
      apt_repository: repo="{{ item }}" update_cache=yes state=present
      with_items:
      # Google Chrome repo
@@ -38,7 +39,6 @@
      - deb http://downloads.hipchat.com/linux/apt stable main
      # # Spotify repo
      - deb http://repository.spotify.com stable non-free
-     
 
    - name: Installing Packages
      apt: name={{ item }} update_cache=yes state=present
@@ -67,6 +67,16 @@
      - hipchat
      # Install Spotify
      - spotify-client
+     # Install Ruby + RVM
+     - ruby-full
+     # Install curl
+     - curl
+     # Install RVM
+     - rvm
+     # Install Pop Corn Time
+     - popcorn-time
+     # Installing Python pip
+     - python-pip
 
    - name: Link to s from subl
      file: src=/usr/bin/subl dest=/usr/bin/s state=link
