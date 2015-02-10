@@ -6,6 +6,9 @@
   remote_user: felipedemorais
   sudo: yes
   tasks:
+   - name: Install virtualenvwrapper
+     pip: name=virtualenvwrapper state=present
+
    - name: python-apt(dependency of the apt_repository)
      apt: name=python-apt update_cache=yes state=present
 
@@ -75,8 +78,15 @@
      - rvm
      # Install Pop Corn Time
      - popcorn-time
-     # Installing Python pip
+     # Install Python pip
      - python-pip
+     # Install header files for libpq5 (PostgreSQL library)
+     - libpq-dev
+     # Install gcc
+     - gcc
 
    - name: Link to s from subl
      file: src=/usr/bin/subl dest=/usr/bin/s state=link
+   
+   - name: link from nodejs to node
+     file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
