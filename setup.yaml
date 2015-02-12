@@ -84,9 +84,11 @@
      - libpq-dev
      # Install gcc
      - gcc
+     # Install libmysqlclient-dev
+     - libmysqlclient-dev
 
    - name: Link to s from subl
      file: src=/usr/bin/subl dest=/usr/bin/s state=link
-   
+
    - name: link from nodejs to node
      file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
