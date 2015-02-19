@@ -32,6 +32,8 @@
      - ppa:rael-gc/rvm
      # Pop Corn Time repo
      - ppa:webupd8team/popcorntime
+     # Grive tools
+     - ppa:thefanclub/grive-tools
 
    - name: Google Chrome, HipChat and Spotify repo
      apt_repository: repo="{{ item }}" update_cache=yes state=present
@@ -86,6 +88,8 @@
      - gcc
      # Install libmysqlclient-dev
      - libmysqlclient-dev
+     #Install Grive
+     - grive
 
    - name: Link to s from subl
      file: src=/usr/bin/subl dest=/usr/bin/s state=link
