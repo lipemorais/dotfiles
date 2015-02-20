@@ -88,8 +88,10 @@
      - gcc
      # Install libmysqlclient-dev
      - libmysqlclient-dev
-     #Install Grive
+     # Install Grive
      - grive
+     # Install Tig
+     - tig
 
    - name: Link to s from subl
      file: src=/usr/bin/subl dest=/usr/bin/s state=link
