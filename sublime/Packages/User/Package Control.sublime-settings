@@ -1,0 +1,28 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"Ansible",
+		"Better CoffeeScript",
+		"BracketHighlighter",
+		"Can I Use",
+		"Djaneiro",
+		"Emmet",
+		"GitGutter",
+		"Markdown Preview",
+		"Package Control",
+		"PlainTasks",
+		"Predawn",
+		"Python Flake8 Lint",
+		"Sass",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"Theme - Soda",
+		"Theme - Spacegray",
+		"TrailingSpaces"
+	]
+}
