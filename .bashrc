@@ -120,7 +120,7 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 alias update="sudo apt-get update"
 alias install="sudo apt-get install"
 alias search="sudo apt-cache search"
@@ -136,12 +136,13 @@ alias gci="git commit"
 alias gco="git checkout"
 alias gcl="git clone"
 alias gs="git status -s"
-alias gst="git status -s"
+alias gst="git status"
 alias gpr="git pull --rebase"
 alias gp='git push'
 alias gpo='git push origin'
-alias gd='git diff --word-diff'
-alias gdc='git diff -p --word-diff --cached'
+alias gpom='git push origin master'
+alias gd='git diff'
+alias gdc='git diff --cached'
 alias gcp='git cherry-pick'
 alias gbr='git branch'
 alias gl='git log -p'
@@ -158,3 +159,8 @@ alias cdp="cd ~/Projects"
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     complete -o default -o nospace -F _git g;
 fi;
+
+export NVM_DIR="/home/felipe/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+nvm use v0.12
