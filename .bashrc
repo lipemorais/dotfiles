@@ -141,6 +141,7 @@ alias gpr="git pull --rebase"
 alias gp='git push'
 alias gpo='git push origin'
 alias gpom='git push origin master'
+alias gadd='git add'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gcp='git cherry-pick'
