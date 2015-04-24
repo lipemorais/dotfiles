@@ -137,24 +137,28 @@ alias gco="git checkout"
 alias gcl="git clone"
 alias gs="git status -s"
 alias gst="git status"
-alias gpr="git pull --rebase"
-alias gp='git push'
-alias gpo='git push origin'
-alias gpom='git push origin master'
-alias gadd='git add'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gcp='git cherry-pick'
-alias gbr='git branch'
-alias gl='git log -p'
-alias glg='git log -p'
-alias gsh='git stash'
-alias gshp='git stash pop'
+alias gpl="git pull"
+alias gplr="git pull --rebase"
+alias gplo="git pull origin"
+alias gplom="git pull origin master"
+alias gp="git push"
+alias gpo="git push origin"
+alias gpom="git push origin master"
+alias gadd="git add"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gcp="git cherry-pick"
+alias gbr="git branch"
+alias gl="git log -p"
+alias glg="git log -p"
+alias gsh="git stash"
+alias gshp="git stash pop"
 
 # Shortcuts
 alias cdbdl="cd ~/Downloads"
 alias cddt="cd ~/Desktop"
 alias cdp="cd ~/Projects"
+alias cdlab="cd ~/Projects/lab21k"
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
